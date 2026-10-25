@@ -1,0 +1,3 @@
+{% extends 'base.html' %}
+{% block title %}Page introuvable{% endblock %}
+{% block content %}<section class="narrow-page"><p class="eyebrow eyebrow-dark">ERREUR 404</p><h1>Cette page <em>n’existe pas.</em></h1><p class="lead">Vérifiez le code de suivi ou revenez aux signalements récents.</p><a class="button button-dark" href="{{ url_for('index') }}">Retour à l’accueil →</a></section>{% endblock %}

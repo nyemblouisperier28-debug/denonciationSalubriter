@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block title %}Connexion des agents{% endblock %}
+{% block content %}
+<section class="narrow-page login-page"><p class="eyebrow eyebrow-dark">ACCÈS MUNICIPAL</p><h1>Espace <em>agents.</em></h1><p class="lead">Connectez-vous pour gérer les signalements de votre service.</p><form class="panel login-form" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><label>Identifiant<input name="login" autocomplete="username" required></label><label>Mot de passe<input type="password" name="password" autocomplete="current-password" required></label><button class="button button-dark button-wide" type="submit">Ouvrir la session →</button></form><p class="demo-hint">Démo : agent1 à agent8 · mot de passe <code>Demo-2026!</code></p></section>
+{% endblock %}

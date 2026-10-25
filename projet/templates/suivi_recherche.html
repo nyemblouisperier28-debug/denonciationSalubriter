@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block title %}Suivre un signalement{% endblock %}
+{% block content %}
+<section class="narrow-page"><p class="eyebrow eyebrow-dark">VOTRE DEMANDE</p><h1>Où en est <em>mon signalement ?</em></h1><p class="lead">Saisissez le code reçu après votre envoi pour retrouver son historique.</p><form class="panel lookup-form" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><label for="code">Code de suivi</label><div class="lookup-row"><input id="code" name="code" required placeholder="URB-00A1B2C3" autocomplete="off"><button class="button button-dark" type="submit">Rechercher →</button></div></form></section>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Suivi {{ report.code_suivi }}{% endblock %}
+{% block content %}
+<section class="narrow-page tracking-page"><a class="back-link" href="{{ url_for('rechercher_suivi') }}">← Retour à la recherche</a><p class="eyebrow eyebrow-dark">SUIVI DE DEMANDE</p><h1>{{ report.adresse }}</h1><div class="tracking-code">CODE <strong>{{ report.code_suivi }}</strong><span class="status status-{{ report.statut|replace(' ', '-') }}">{{ report.statut }}</span></div>
+  <div class="panel tracking-summary"><div><span>Catégorie</span><strong>{{ report.categorie }}</strong></div><div><span>Quartier</span><strong>{{ report.quartier }}</strong></div><div><span>Déposé le</span><strong>{{ report.date_creation[:10] }}</strong></div><p>{{ report.description }}</p></div>
+  <h2>Historique des interventions</h2>{% if events %}<ol class="timeline">{% for event in events %}<li><span class="timeline-mark"></span><div><div class="timeline-top"><strong>{{ event.nouveau_statut }}</strong><time>{{ event.date_intervention[:16] }}</time></div><p>{{ event.commentaire }}</p><small>Service municipal · {{ event.agent_nom }}</small></div></li>{% endfor %}</ol>{% else %}<div class="empty-state compact"><p>Votre signalement est transmis au service concerné. Les mises à jour apparaîtront ici.</p></div>{% endif %}
+</section>
+{% endblock %}

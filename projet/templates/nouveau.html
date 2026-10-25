@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Nouveau signalement{% endblock %}
+{% block content %}
+<section class="form-page"><div class="form-intro"><p class="eyebrow eyebrow-dark">FAIRE BOUGER LES CHOSES</p><h1>Un problème,<br><em>un signalement.</em></h1><p>Décrivez ce que vous voyez. Une photo et un repère précis aideront nos équipes à intervenir.</p><div class="form-note"><span>01</span><p>Après l’envoi, vous recevrez un code unique pour suivre chaque étape.</p></div></div>
+  <form class="panel form-panel" method="post" enctype="multipart/form-data" data-report-form>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="form-row"><label>Type de problème<select name="categorie_id" required><option value="">Choisir une catégorie</option>{% for category in categories %}<option value="{{ category.id }}">{{ category.nom }}</option>{% endfor %}</select></label><label>Quartier<select name="quartier_id" required><option value="">Choisir un quartier</option>{% for district in districts %}<option value="{{ district.id }}">{{ district.nom }}</option>{% endfor %}</select></label></div>
+    <label>Description <span class="label-hint">20 caractères minimum</span><textarea name="description" rows="4" minlength="20" maxlength="1000" required placeholder="Que se passe-t-il ? Depuis quand ? Y a-t-il un danger ?"></textarea><small class="character-count" data-character-count>0 / 1000</small></label>
+    <label>Adresse ou repère<input name="adresse" maxlength="180" required placeholder="Ex. avenue de la Gare, devant le marché"></label>
+    <label>Téléphone <span class="label-hint">facultatif</span><input name="telephone" type="tel" autocomplete="tel" placeholder="Pour être recontacté si besoin"></label>
+    <label class="upload-area" for="photo"><span class="upload-icon" aria-hidden="true">↑</span><strong>Ajouter une photo</strong><span>JPG ou PNG · 2 Mo maximum</span><input id="photo" name="photo" type="file" accept="image/jpeg,image/png,.jpg,.jpeg,.png" required data-photo-input></label>
+    <div class="photo-preview" data-photo-preview hidden><img alt="Aperçu de la photo sélectionnée"><button class="clear-photo" type="button" data-clear-photo aria-label="Retirer la photo">×</button></div>
+    <p class="form-error" data-form-error role="alert"></p>
+    <button class="button button-dark button-wide" type="submit">Envoyer le signalement <span>↗</span></button>
+    <p class="privacy-note">Vos coordonnées ne sont jamais affichées publiquement.</p>
+  </form>
+</section>
+{% endblock %}
